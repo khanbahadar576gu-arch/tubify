@@ -44,8 +44,8 @@ visible FAQ, `robots.txt`, and `sitemap.xml`.
 1. Replace **`OWNER/REPO`** in the three `app-arm64-v8a-release.apk` links (hero button, download
    section, bottom dock) with your GitHub repo
    (e.g. `https://github.com/your-username/tubify/releases/latest/download/...`).
-2. Update the **version** (`v1.5.2`) and **size** (`63 MB`) when you ship a new build.
-   The site ships **only the arm64-v8a build** (~63 MB) — modern phones (2018+). To support
+2. Update the **version** (`v1.5.2`) and **size** (`66 MB`) when you ship a new build.
+   The site ships **only the arm64-v8a build** (~66 MB) — modern phones (2018+). To support
    32-bit / other devices later, add those APKs and links back.
 
 All three buttons carry the `download` attribute and point at GitHub Release assets, which are served
