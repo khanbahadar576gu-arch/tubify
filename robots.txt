@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://khanbahadar576gu-arch.github.io/tubify/sitemap.xml

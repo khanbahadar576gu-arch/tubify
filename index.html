@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Tubify – Free Video &amp; Music Downloader for Android</title>
+<meta name="description" content="Download videos and music from YouTube, TikTok, Instagram, Facebook, X and 1000+ sites in any quality — up to 4K or MP3. Free Android downloader with a built-in player. No ads, no account." />
+<meta name="keywords" content="video downloader, music downloader, YouTube downloader, TikTok downloader, Instagram downloader, MP3 downloader, Android video downloader, 4K video downloader, Tubify" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#FF0033" />
+<meta name="color-scheme" content="light" />
+<link rel="canonical" href="https://khanbahadar576gu-arch.github.io/tubify/" />
+
+<!-- Open Graph (Facebook, WhatsApp, etc.) -->
+<meta property="og:site_name" content="Tubify" />
+<meta property="og:title" content="Tubify – Free Video &amp; Music Downloader for Android" />
+<meta property="og:description" content="Download from YouTube, TikTok, Instagram, Facebook and 1000+ sites in any quality, with a built-in player. Free, no ads, no account." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://khanbahadar576gu-arch.github.io/tubify/" />
+<meta property="og:image" content="https://khanbahadar576gu-arch.github.io/tubify/logo.png" />
+<meta property="og:image:alt" content="Tubify logo" />
+
+<!-- Twitter / X cards -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Tubify – Free Video &amp; Music Downloader for Android" />
+<meta name="twitter:description" content="Download from YouTube, TikTok, Instagram, Facebook and 1000+ sites in any quality. Free, no ads, no account." />
+<meta name="twitter:image" content="https://khanbahadar576gu-arch.github.io/tubify/logo.png" />
+
+<link rel="icon" href="favicon.webp" type="image/webp" />
+<link rel="apple-touch-icon" href="logo.png" />
+<link rel="manifest" href="site.webmanifest" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- ============================================================================
+     Download links point at github.com/khanbahadar576gu-arch/tubify releases.
+     Upload app-arm64-v8a-release.apk as a Release asset — "releases/latest/download/<file>"
+     always resolves to the newest release. Update the version/sizes when you ship a new build.
+     ============================================================================ -->
+
+<style>
+  :root {
+    --bg: #F3F3F1;
+    --surface: #FBFBFA;
+    --text: #1E1E22;
+    --muted: #76767C;
+    --border: #E6E6E4;
+    --brand: #FF0033;
+    --brand-press: #D60029;
+    --brand-tint: #FFE7EC;
+    --on-brand: #FFF6F7;
+    --shadow: 0 6px 24px rgba(20,20,22,0.08);
+    --shadow-sm: 0 4px 16px rgba(20,20,22,0.05);
+  }
+  /* Tubify's site is always light mode, regardless of the device theme. */
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    /* room for the fixed mobile download dock */
+    padding-bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 18px; }
+  section[id] { scroll-margin-top: 86px; }
+
+  /* ── Floating pill header (mirrors the app's nav) ── */
+  header { position: sticky; top: 12px; z-index: 50; padding: 0 14px; }
+  .nav {
+    max-width: 1040px; margin: 0 auto; display: flex; align-items: center; gap: 10px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
+    box-shadow: var(--shadow); padding: 8px 8px 8px 16px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 17px; }
+  .brand img { width: 26px; height: 26px; }
+  .nav .spacer { flex: 1; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: inherit; font-weight: 600; font-size: 15px; min-height: 44px;
+    border: none; border-radius: 999px; cursor: pointer; padding: 11px 20px;
+    transition: transform .08s ease, background .15s ease;
+  }
+  .btn:active { transform: scale(.97); }
+  .btn-primary { background: var(--brand); color: var(--on-brand); }
+  .btn-primary:hover { background: var(--brand-press); }
+  .nav .btn { min-height: 40px; padding: 9px 18px; font-size: 14px; }
+
+  /* ── Hero ── */
+  .hero { text-align: center; padding: 40px 0 24px; }
+  h1 { font-size: clamp(28px, 8vw, 50px); font-weight: 700; letter-spacing: -.5px; line-height: 1.1; margin-top: 8px; }
+  h1 .accent { color: var(--brand); }
+  .subtitle { color: var(--muted); font-size: clamp(15px, 4vw, 18px); max-width: 600px; margin: 16px auto 0; }
+  .cta { margin-top: 26px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .cta .btn-primary { font-size: 16px; min-height: 52px; padding: 0 30px; width: 100%; max-width: 340px; box-shadow: var(--shadow-sm); }
+  .cta-note { color: var(--muted); font-size: 13px; }
+  .cta-note a { color: var(--brand); font-weight: 600; }
+
+  /* ── Sections ── */
+  section.block { padding: 38px 0; }
+  .section-title { text-align: center; font-size: clamp(23px, 6vw, 34px); font-weight: 700; letter-spacing: -.4px; }
+  .section-sub { text-align: center; color: var(--muted); margin: 9px auto 0; max-width: 540px; font-size: 15px; }
+
+  /* ── Feature cards (1 col mobile → multi-col up) ── */
+  .features { margin-top: 26px; display: grid; gap: 14px; grid-template-columns: 1fr; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 22px; padding: 20px; box-shadow: var(--shadow-sm); }
+  .card.row { display: flex; gap: 16px; align-items: flex-start; }
+  .ic { flex: none; width: 46px; height: 46px; border-radius: 13px; display: flex; align-items: center; justify-content: center; background: var(--brand-tint); color: var(--brand); }
+  .ic svg { width: 25px; height: 25px; }
+  .card h3 { font-size: 17px; font-weight: 600; }
+  .card p { color: var(--muted); font-size: 14.5px; margin-top: 4px; }
+
+  /* ── Install steps ── */
+  .steps { margin-top: 24px; max-width: 680px; margin-inline: auto; display: grid; gap: 12px; }
+  .step { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 15px 16px; display: flex; gap: 13px; align-items: flex-start; }
+  .step .n { flex: none; width: 28px; height: 28px; border-radius: 999px; background: var(--brand); color: var(--on-brand); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+  .step .t strong { font-weight: 600; font-size: 15px; }
+  .step .t p { color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .callout { margin-top: 16px; max-width: 680px; margin-inline: auto; background: var(--brand-tint); border: 1px solid var(--brand); border-radius: 16px; padding: 15px 16px; font-size: 14px; }
+  .callout strong { color: var(--brand); }
+
+  /* ── FAQ ── */
+  .faq { margin-top: 24px; max-width: 720px; margin-inline: auto; display: grid; gap: 12px; }
+  .faq details { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2px 18px; }
+  .faq summary { list-style: none; cursor: pointer; font-weight: 600; font-size: 15.5px; padding: 15px 0; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; color: var(--brand); font-size: 22px; font-weight: 400; line-height: 1; }
+  .faq details[open] summary::after { content: "\2212"; }
+  .faq details p { color: var(--muted); font-size: 14.5px; padding: 0 0 16px; margin: 0; }
+
+  /* ── Footer ── */
+  footer { border-top: 1px solid var(--border); margin-top: 30px; padding: 28px 0 36px; text-align: center; color: var(--muted); font-size: 13.5px; }
+  footer .brand { justify-content: center; color: var(--text); margin-bottom: 8px; }
+
+  /* ── Fixed mobile download dock ── */
+  .dock {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -6px 24px rgba(0,0,0,0.10);
+    transition: transform .25s ease;
+  }
+  .dock .btn-primary { width: 100%; min-height: 52px; font-size: 16px; box-shadow: var(--shadow-sm); }
+  .dock.hidden { transform: translateY(130%); }
+
+  /* ── Desktop / tablet ── */
+  @media (min-width: 720px) {
+    body { padding-bottom: 0; }
+    .dock { display: none; }
+    .wrap { padding: 0 24px; }
+    .hero { padding: 64px 0 32px; }
+    .cta .btn-primary { width: auto; }
+    section.block { padding: 52px 0; }
+    .features { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .nav .btn { min-height: 40px; }
+  }
+</style>
+
+<!-- Structured data for rich search results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Tubify",
+  "operatingSystem": "Android 7.0+",
+  "applicationCategory": "MultimediaApplication",
+  "description": "Free Android downloader for videos and music from YouTube, TikTok, Instagram, Facebook, X and 1000+ sites, in any quality up to 4K or MP3, with a built-in player.",
+  "softwareVersion": "1.5.2",
+  "fileSize": "63MB",
+  "url": "https://khanbahadar576gu-arch.github.io/tubify/",
+  "downloadUrl": "https://khanbahadar576gu-arch.github.io/tubify/",
+  "installUrl": "https://khanbahadar576gu-arch.github.io/tubify/",
+  "image": "https://khanbahadar576gu-arch.github.io/tubify/logo.png",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "Tubify", "url": "https://khanbahadar576gu-arch.github.io/tubify/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is Tubify free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — Tubify is completely free, with no ads, no subscriptions and no account required." } },
+    { "@type": "Question", "name": "Which sites does Tubify support?", "acceptedAnswer": { "@type": "Answer", "text": "Tubify downloads from YouTube, TikTok, Instagram, Facebook, X (Twitter) and over 1,000 other video and music sites." } },
+    { "@type": "Question", "name": "Can I download YouTube videos as MP3?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can save any video as audio in MP3 or M4A, or download the video itself in any resolution up to 4K." } },
+    { "@type": "Question", "name": "Is Tubify safe to install?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tubify is a clean Android app. Because it isn't on the Play Store, Android may show a Play Protect prompt for new apps — just tap More details, then Install anyway." } },
+    { "@type": "Question", "name": "Do I need an account?", "acceptedAnswer": { "@type": "Answer", "text": "No. There is no sign-up or login — install the app and start downloading right away." } },
+    { "@type": "Question", "name": "How do I update Tubify?", "acceptedAnswer": { "@type": "Answer", "text": "Download the latest app from this page and install it over your current version — your downloads and settings are kept." } },
+    { "@type": "Question", "name": "How do I download a video with Tubify?", "acceptedAnswer": { "@type": "Answer", "text": "Open Tubify, paste a link or search, pick the format and quality you want, then tap download. The file is saved to your device." } },
+    { "@type": "Question", "name": "Where are my downloads saved?", "acceptedAnswer": { "@type": "Answer", "text": "By default in your phone's Download/Tubify folder. You can choose any folder in Settings → Save location." } },
+    { "@type": "Question", "name": "Can I download videos in 4K or 1080p?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Before downloading you can pick the exact resolution a video offers, from 360p up to 4K." } },
+    { "@type": "Question", "name": "Can I download TikTok or Instagram videos without a watermark?", "acceptedAnswer": { "@type": "Answer", "text": "Tubify saves TikTok and Instagram videos in their original form. When a watermark-free source is available, that is the version you get." } },
+    { "@type": "Question", "name": "Is there a download limit?", "acceptedAnswer": { "@type": "Answer", "text": "No. There is no daily cap, no queue limit and no file-size limit — download as much as you like." } },
+    { "@type": "Question", "name": "Does Tubify work on iPhone (iOS)?", "acceptedAnswer": { "@type": "Answer", "text": "No. Tubify is an Android app and there is no iOS version." } },
+    { "@type": "Question", "name": "Is it legal to use Tubify?", "acceptedAnswer": { "@type": "Answer", "text": "Tubify is a general-purpose download tool. Only download content you own or have permission to save, and respect the rights of creators and each site's terms of service." } },
+    { "@type": "Question", "name": "Why isn't Tubify on the Google Play Store?", "acceptedAnswer": { "@type": "Answer", "text": "Google Play doesn't allow apps that download videos from YouTube, so Tubify is distributed directly from this site. That's also why Android may show a one-time Play Protect prompt the first time you install." } }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="#top"><img src="logo.png" alt="Tubify logo" width="26" height="26" /> Tubify</a>
+    <span class="spacer"></span>
+    <a class="btn btn-primary" href="#download">Get app</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>Download any video or song from <span class="accent">1000+ sites</span></h1>
+      <p class="subtitle">YouTube, TikTok, Instagram, Facebook, X and over a thousand more — in any quality, straight to your phone, with a built-in video player.</p>
+      <div class="cta">
+        <a class="btn btn-primary" download href="https://github.com/khanbahadar576gu-arch/tubify/releases/latest/download/app-arm64-v8a-release.apk">⬇&nbsp; Download for Android</a>
+        <span class="cta-note">Android 7.0+ &nbsp;•&nbsp; v1.5.2 &nbsp;•&nbsp; ~63 MB</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ── -->
+  <section class="block" id="features">
+    <div class="wrap">
+      <h2 class="section-title">Everything you need</h2>
+      <p class="section-sub">A complete downloader, built to feel fast and stay out of your way.</p>
+      <div class="features">
+
+        <div class="card row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><path d="M2 12H22"/></svg></div>
+          <div><h3>1000+ supported sites</h3><p>Download from YouTube, TikTok, Instagram, Facebook, X, and over a thousand more.</p></div>
+        </div>
+
+        <div class="card row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18.9737 15.0215C18.9795 14.9928 19.0205 14.9928 19.0263 15.0215C19.3302 16.5081 20.4919 17.6698 21.9785 17.9737C22.0072 17.9795 22.0072 18.0205 21.9785 18.0263C20.4919 18.3302 19.3302 19.4919 19.0263 20.9785C19.0205 21.0072 18.9795 21.0072 18.9737 20.9785C18.6698 19.4919 17.5081 18.3302 16.0215 18.0263C15.9928 18.0205 15.9928 17.9795 16.0215 17.9737C17.5081 17.6698 18.6698 16.5081 18.9737 15.0215Z"/><path d="M14.6469 12.6727C15.3884 12.1531 15.7591 11.8934 15.9075 11.5158C16.0308 11.2021 16.0308 10.7979 15.9075 10.4842C15.7591 10.1066 15.3884 9.84685 14.6469 9.3273C14.1274 8.9633 13.5894 8.60214 13.1167 8.3165C12.7229 8.07852 12.2589 7.82314 11.7929 7.57784C11.005 7.16312 10.6111 6.95576 10.2297 7.00792C9.91348 7.05115 9.58281 7.25237 9.38829 7.5199C9.1536 7.84266 9.12432 8.30677 9.06577 9.23497C9.02725 9.84551 9 10.4661 9 11C9 11.5339 9.02725 12.1545 9.06577 12.765C9.12432 13.6932 9.1536 14.1573 9.38829 14.4801C9.58281 14.7476 9.91348 14.9489 10.2297 14.9921C10.6111 15.0442 11.005 14.8369 11.7929 14.4221C12.2589 14.1768 12.7229 13.9215 13.1167 13.6835C13.5894 13.3978 14.1274 13.0367 14.6469 12.6727Z"/><path d="M21.872 14.8357C22 13.9227 22 12.7279 22 11C22 8.19974 22 6.79961 21.455 5.73005C20.9757 4.78924 20.2108 4.02433 19.27 3.54497C18.2004 3 16.8003 3 14 3H10C7.19974 3 5.79961 3 4.73005 3.54497C3.78924 4.02433 3.02433 4.78924 2.54497 5.73005C2 6.79961 2 8.19974 2 11C2 13.8003 2 15.2004 2.54497 16.27C3.02433 17.2108 3.78924 17.9757 4.73005 18.455C5.79961 19 7.19974 19 10 19H13.4257"/></svg></div>
+          <div><h3>Any quality you want</h3><p>Grab any resolution up to 4K, or pull just the audio as MP3 or M4A.</p></div>
+        </div>
+
+        <div class="card row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.9531 12.3948C14.8016 13.0215 14.0857 13.4644 12.6539 14.3502C11.2697 15.2064 10.5777 15.6346 10.0199 15.4625C9.78934 15.3913 9.57925 15.2562 9.40982 15.07C9 14.6198 9 13.7465 9 12C9 10.2535 9 9.38018 9.40982 8.92995C9.57925 8.74381 9.78934 8.60868 10.0199 8.53753C10.5777 8.36544 11.2697 8.79357 12.6539 9.64983C14.0857 10.5356 14.8016 10.9785 14.9531 11.6052C15.0156 11.8639 15.0156 12.1361 14.9531 12.3948Z"/><path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z"/></svg></div>
+          <div><h3>Built-in video player</h3><p>Watch your downloads in-app with gesture controls, background play, and picture-in-picture.</p></div>
+        </div>
+
+        <div class="card row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.99969 17.0002C2.99969 17.9302 2.99969 18.3952 3.10192 18.7767C3.37932 19.8119 4.18796 20.6206 5.22324 20.898C5.60474 21.0002 6.06972 21.0002 6.99969 21.0002L16.9997 21.0002C17.9297 21.0002 18.3947 21.0002 18.7762 20.898C19.8114 20.6206 20.6201 19.8119 20.8975 18.7767C20.9997 18.3952 20.9997 17.9302 20.9997 17.0002"/><path d="M16.4998 11.5002C16.4998 11.5002 13.1856 16.0002 11.9997 16.0002C10.8139 16.0002 7.49976 11.5002 7.49976 11.5002M11.9997 15.0002V3.00016"/></svg></div>
+          <div><h3>Smart downloads</h3><p>Queue, pause and resume, with a 30-day recycle bin so nothing is lost by accident.</p></div>
+        </div>
+
+        <div class="card row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"/><path d="M8 12.5L10 14.5L15.5 9.5"/></svg></div>
+          <div><h3>Free, no ads</h3><p>Completely free to use — no account, no sign-in, no ads, ever.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Download ── -->
+  <section class="block" id="download">
+    <div class="wrap" style="text-align:center;">
+      <h2 class="section-title">Download Tubify</h2>
+      <p class="section-sub">Free, no ads, no account — for Android 7.0 and newer.</p>
+      <div class="cta" style="margin-top:24px;">
+        <a class="btn btn-primary" download href="https://github.com/khanbahadar576gu-arch/tubify/releases/latest/download/app-arm64-v8a-release.apk">⬇&nbsp; Download App &nbsp;·&nbsp; 63 MB</a>
+        <span class="cta-note">v1.5.2 &nbsp;•&nbsp; arm64 &nbsp;•&nbsp; works on phones from 2018 onward</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How to install ── -->
+  <section class="block" id="install">
+    <div class="wrap">
+      <h2 class="section-title">How to install</h2>
+      <p class="section-sub">Tubify isn't on the Play Store, so you install the app directly. It takes a few taps.</p>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><div class="t"><strong>Download the app</strong><p>Tap the download button and let it finish.</p></div></div>
+        <div class="step"><div class="n">2</div><div class="t"><strong>Open the file</strong><p>Tap the downloaded file. If asked, allow your browser or files app to “install unknown apps.”</p></div></div>
+        <div class="step"><div class="n">3</div><div class="t"><strong>If you see a Play Protect warning</strong><p>Tap <strong>More details → Install anyway</strong>. It appears only because the app is new — your install helps build its reputation.</p></div></div>
+        <div class="step"><div class="n">4</div><div class="t"><strong>Open Tubify</strong><p>Paste a link or search, pick a quality, and start downloading.</p></div></div>
+      </div>
+      <div class="callout">
+        <strong>Why the warning?</strong> Google Play Protect flags any brand-new app it “hasn’t seen before.” Tubify is safe to install — the prompt simply fades as more people install it.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="block" id="faq">
+    <div class="wrap">
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div class="faq">
+        <details open>
+          <summary>Is Tubify free?</summary>
+          <p>Yes — Tubify is completely free, with no ads, no subscriptions and no account required.</p>
+        </details>
+        <details>
+          <summary>Which sites does Tubify support?</summary>
+          <p>Tubify downloads from YouTube, TikTok, Instagram, Facebook, X (Twitter) and over 1,000 other video and music sites.</p>
+        </details>
+        <details>
+          <summary>Can I download YouTube videos as MP3?</summary>
+          <p>Yes. You can save any video as audio in MP3 or M4A, or download the video itself in any resolution up to 4K.</p>
+        </details>
+        <details>
+          <summary>Is Tubify safe to install?</summary>
+          <p>Yes. Tubify is a clean Android app. Because it isn't on the Play Store, Android may show a Play Protect prompt for new apps — just tap More details, then Install anyway.</p>
+        </details>
+        <details>
+          <summary>Do I need an account?</summary>
+          <p>No. There's no sign-up or login — install the app and start downloading right away.</p>
+        </details>
+        <details>
+          <summary>How do I update Tubify?</summary>
+          <p>Download the latest app from this page and install it over your current version — your downloads and settings are kept.</p>
+        </details>
+        <details>
+          <summary>How do I download a video with Tubify?</summary>
+          <p>Open Tubify, paste a link or search, pick the format and quality you want, then tap download. The file is saved to your device.</p>
+        </details>
+        <details>
+          <summary>Where are my downloads saved?</summary>
+          <p>By default in your phone's Download/Tubify folder. You can choose any folder in Settings → Save location.</p>
+        </details>
+        <details>
+          <summary>Can I download videos in 4K or 1080p?</summary>
+          <p>Yes. Before downloading you can pick the exact resolution a video offers, from 360p up to 4K.</p>
+        </details>
+        <details>
+          <summary>Can I download TikTok or Instagram videos without a watermark?</summary>
+          <p>Tubify saves TikTok and Instagram videos in their original form. When a watermark-free source is available, that is the version you get.</p>
+        </details>
+        <details>
+          <summary>Is there a download limit?</summary>
+          <p>No. There is no daily cap, no queue limit and no file-size limit — download as much as you like.</p>
+        </details>
+        <details>
+          <summary>Does Tubify work on iPhone (iOS)?</summary>
+          <p>No. Tubify is an Android app and there is no iOS version.</p>
+        </details>
+        <details>
+          <summary>Is it legal to use Tubify?</summary>
+          <p>Tubify is a general-purpose download tool. Only download content you own or have permission to save, and respect the rights of creators and each site's terms of service.</p>
+        </details>
+        <details>
+          <summary>Why isn't Tubify on the Google Play Store?</summary>
+          <p>Google Play doesn't allow apps that download videos from YouTube, so Tubify is distributed directly from this site. That's also why Android may show a one-time Play Protect prompt the first time you install.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><img src="logo.png" alt="Tubify" width="24" height="24" loading="lazy" decoding="async" style="width:24px;height:24px;" /> Tubify</div>
+    <p>Made with ❤ for the open web &nbsp;•&nbsp; v1.5.2</p>
+    <p style="margin-top:8px;"><a href="privacy.html" style="color:var(--brand);font-weight:600;">Privacy Policy</a></p>
+    <p style="margin-top:6px;font-size:13px;">Tubify is free software. Please respect the rights of content owners.</p>
+  </div>
+</footer>
+
+<!-- Persistent download bar (mobile only) -->
+<div class="dock" id="dock">
+  <a class="btn btn-primary" download href="https://github.com/khanbahadar576gu-arch/tubify/releases/latest/download/app-arm64-v8a-release.apk">⬇&nbsp; Download Tubify &nbsp;·&nbsp; 63 MB</a>
+</div>
+
+<script>
+  // Slide the dock away while the download section is on screen (avoids a duplicate CTA).
+  (function () {
+    var dock = document.getElementById('dock');
+    var dl = document.getElementById('download');
+    if (dock && dl && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        dock.classList.toggle('hidden', entries[0].isIntersecting);
+      }, { threshold: 0.15 }).observe(dl);
+    }
+  })();
+</script>
+
+</body>
+</html>
