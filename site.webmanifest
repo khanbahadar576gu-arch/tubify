@@ -1,0 +1,12 @@
+{
+  "name": "Tubify – Video & Music Downloader",
+  "short_name": "Tubify",
+  "description": "Free Android downloader for videos and music from 1000+ sites.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F3F3F1",
+  "theme_color": "#FF0033",
+  "icons": [
+    { "src": "logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
